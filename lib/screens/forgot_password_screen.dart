@@ -3,56 +3,40 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:location_tracking_app/global/global.dart';
-import 'package:location_tracking_app/screens/forgot_password_screen.dart';
-import 'package:location_tracking_app/screens/main_page.dart';
+import 'package:location_tracking_app/screens/login_screen.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class ForgotPasswordScreen extends StatefulWidget {
+  const ForgotPasswordScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   final emailTextEditingController = TextEditingController();
-  final passwordTextEditingController = TextEditingController();
-
-  bool _passwordVisible = false;
 
   // declare a Global key
   final _formKey = GlobalKey<FormState>();
 
-  void _submit() async {
-    // validate all the form field
-    if (_formKey.currentState!.validate()) {
-      await firebaseAuth
-          .signInWithEmailAndPassword(
-        email: emailTextEditingController.text.trim(),
-        password: passwordTextEditingController.text.trim(),
-      )
-          .then((auth) async {
-        currentUser = auth.user;
-
-        await Fluttertoast.showToast(msg: "Successfully LoggedIn");
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (c) => MainScreen(),
-          ),
-        );
-      }).catchError(
-        (errorMessage) {
-          Fluttertoast.showToast(msg: "Error occured: \n $errorMessage");
-        },
-      );
-      Fluttertoast.showToast(msg: "Not all field are valid");
-    }
+  void _submit() {
+    firebaseAuth
+        .sendPasswordResetEmail(email: emailTextEditingController.text.trim())
+        .then((value) {
+      Fluttertoast.showToast(
+          msg:
+              "We have sent you an email to recover password, please check email.");
+    }).onError(
+      (error, stackTrace) {
+        Fluttertoast.showToast(msg: "Error Occured: \n ${error.toString()}");
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     bool darkTheme =
         MediaQuery.of(context).platformBrightness == Brightness.dark;
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -69,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 10,
                 ),
                 Text(
-                  'Login',
+                  'Forgot Password Screen',
                   style: TextStyle(
                     color: darkTheme ? Colors.amber.shade400 : Colors.blue,
                     fontSize: 25,
@@ -137,72 +121,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             SizedBox(
                               height: 10,
                             ),
-                            TextFormField(
-                              obscureText: !_passwordVisible,
-                              inputFormatters: [
-                                LengthLimitingTextInputFormatter(50)
-                              ],
-                              decoration: InputDecoration(
-                                  hintText: 'Password',
-                                  hintStyle: TextStyle(
-                                    color: Colors.grey,
-                                  ),
-                                  filled: true,
-                                  fillColor: darkTheme
-                                      ? Colors.black45
-                                      : Colors.grey.shade200,
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(40),
-                                    borderSide: BorderSide(
-                                      width: 0,
-                                      style: BorderStyle.none,
-                                    ),
-                                  ),
-                                  prefixIcon: Icon(
-                                    Icons.lock,
-                                    color: darkTheme
-                                        ? Colors.amber.shade400
-                                        : Colors.grey,
-                                  ),
-                                  suffixIcon: IconButton(
-                                    icon: Icon(
-                                      _passwordVisible
-                                          ? Icons.visibility
-                                          : Icons.visibility_off,
-                                      color: darkTheme
-                                          ? Colors.amber.shade400
-                                          : Colors.grey,
-                                    ),
-                                    onPressed: () {
-                                      setState(() {
-                                        _passwordVisible = !_passwordVisible;
-                                      });
-                                    },
-                                  )),
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              validator: (text) {
-                                if (text == null || text.isEmpty) {
-                                  return "Password can't be emty";
-                                }
-                                if (EmailValidator.validate(text) == true) {
-                                  return null;
-                                }
-                                if (text.length < 6) {
-                                  return "Please enter a valid Password";
-                                }
-                                if (text.length > 49) {
-                                  return "Password cannot be more than 50";
-                                }
-                                return null;
-                              },
-                              onChanged: (text) => setState(() {
-                                passwordTextEditingController.text = text;
-                              }),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 primary: darkTheme
@@ -220,7 +138,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 _submit();
                               },
                               child: Text(
-                                'Login',
+                                'Send Reset Password link',
                                 style: TextStyle(
                                   fontSize: 20,
                                 ),
@@ -230,13 +148,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               height: 10,
                             ),
                             GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (c) =>
-                                            ForgotPasswordScreen()));
-                              },
+                              onTap: () {},
                               child: Text(
                                 'Fogot Password',
                                 style: TextStyle(
@@ -253,7 +165,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  "Doesn't have an account?",
+                                  "Already have an account?",
                                   style: TextStyle(
                                     color: Colors.grey,
                                     fontSize: 15,
@@ -263,9 +175,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                   width: 5,
                                 ),
                                 GestureDetector(
-                                  onTap: () {},
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (c) => LoginScreen()));
+                                  },
                                   child: Text(
-                                    "Register",
+                                    "Login",
                                     style: TextStyle(
                                       fontSize: 15,
                                       color: darkTheme

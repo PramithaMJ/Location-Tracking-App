@@ -4,6 +4,7 @@ import 'package:location_tracking_app/firebase_options.dart';
 import 'package:location_tracking_app/screens/login_screen.dart';
 import 'package:location_tracking_app/screens/main_page.dart';
 import 'package:location_tracking_app/screens/register_screen.dart';
+import 'package:location_tracking_app/splashScreen/splash_screen.dart';
 import 'package:location_tracking_app/themeProvider/theme_provider.dart';
  import 'firebase_options.dart';
 
