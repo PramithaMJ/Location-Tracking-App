@@ -9,6 +9,8 @@ import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:location_tracking_app/global/global.dart';
+import 'package:location_tracking_app/screens/forgot_password_screen.dart';
+import 'package:location_tracking_app/screens/login_screen.dart';
 import 'package:location_tracking_app/screens/main_page.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -449,7 +451,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               height: 10,
                             ),
                             GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (c) =>
+                                            ForgotPasswordScreen()));
+                              },
                               child: Text(
                                 'Fogot Password',
                                 style: TextStyle(
@@ -476,7 +484,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   width: 5,
                                 ),
                                 GestureDetector(
-                                  onTap: () {},
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (c) => LoginScreen()));
+                                  },
                                   child: Text(
                                     "Sign In",
                                     style: TextStyle(
@@ -503,5 +516,3 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 }
-
-//15:23
