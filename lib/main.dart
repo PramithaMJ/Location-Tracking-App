@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:location_tracking_app/firebase_options.dart';
+import 'package:location_tracking_app/screens/login_screen.dart';
 import 'package:location_tracking_app/screens/main_page.dart';
 import 'package:location_tracking_app/screens/register_screen.dart';
 import 'package:location_tracking_app/themeProvider/theme_provider.dart';
@@ -26,8 +27,8 @@ class MyApp extends StatelessWidget {
       theme: MyThemes.lightTheme,
       darkTheme: MyThemes.darkTheme,
       debugShowCheckedModeBanner: false,
-      home: RegisterScreen(),
+      home: LoginScreen(),
     );
   }
 }
-//19:16
+//29:11
