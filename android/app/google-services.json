@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "683619942788",
+    "firebase_url": "https://vehical-location-tracker-default-rtdb.firebaseio.com",
     "project_id": "vehical-location-tracker",
     "storage_bucket": "vehical-location-tracker.appspot.com"
   },
@@ -10,6 +11,25 @@
         "mobilesdk_app_id": "1:683619942788:android:806368626ff801e8021dd1",
         "android_client_info": {
           "package_name": "com.example.location_tracking_ap"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZ2wpff_O3DEApb-ygeT22FxrWKrFJ9i0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:683619942788:android:231bf68114c605a9021dd1",
+        "android_client_info": {
+          "package_name": "com.example.location_tracking_app"
         }
       },
       "oauth_client": [],
