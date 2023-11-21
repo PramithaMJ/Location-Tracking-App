@@ -43,6 +43,15 @@ dependencies:
   firebase_storage: ^11.5.1
   firebase_messaging: ^14.7.4
   fluttertoast: ^8.2.4
+  url_launcher: ^6.2.1
+  google_maps_flutter: ^2.5.0
+  geolocator: ^10.1.0
+  geocoder2: ^1.4.0
+  flutter_geofire: ^2.0.3
+  location: ^5.0.3
+  flutter_polyline_points: ^1.0.0
+  smooth_star_rating_nsafe: ^1.0.0+1
+  animated_text_kit: ^4.2.2
 
 dev_dependencies:
   flutter_test:

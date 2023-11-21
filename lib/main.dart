@@ -2,11 +2,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:location_tracking_app/firebase_options.dart';
 import 'package:location_tracking_app/screens/login_screen.dart';
-import 'package:location_tracking_app/screens/main_page.dart';
+import 'package:location_tracking_app/screens/main_screen.dart';
 import 'package:location_tracking_app/screens/register_screen.dart';
 import 'package:location_tracking_app/splashScreen/splash_screen.dart';
 import 'package:location_tracking_app/themeProvider/theme_provider.dart';
- import 'firebase_options.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,4 +32,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-//29:11
+//19:11

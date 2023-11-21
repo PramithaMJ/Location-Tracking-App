@@ -11,7 +11,7 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:location_tracking_app/global/global.dart';
 import 'package:location_tracking_app/screens/forgot_password_screen.dart';
 import 'package:location_tracking_app/screens/login_screen.dart';
-import 'package:location_tracking_app/screens/main_page.dart';
+import 'package:location_tracking_app/screens/main_screen.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});

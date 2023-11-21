@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:location_tracking_app/global/global.dart';
 import 'package:location_tracking_app/screens/forgot_password_screen.dart';
-import 'package:location_tracking_app/screens/main_page.dart';
+import 'package:location_tracking_app/screens/main_screen.dart';
 import 'package:location_tracking_app/screens/register_screen.dart';
 
 class LoginScreen extends StatefulWidget {

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:location_tracking_app/Assistants/assistent_method.dart';
 import 'package:location_tracking_app/global/global.dart';
 import 'package:location_tracking_app/screens/login_screen.dart';
-import 'package:location_tracking_app/screens/main_page.dart';
+import 'package:location_tracking_app/screens/main_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
